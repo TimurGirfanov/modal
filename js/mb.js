@@ -1,6 +1,6 @@
 var MB_CLOSE='X';
 var scrollY=0;
-mb={
+var mb={
 	// open.
 	open:function(options){
 		scrollY=$(window).scrollTop();
