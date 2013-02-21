@@ -22,22 +22,8 @@ var mb={
 				// append content's blocks;
 				box.html('<div class="box-text"><div class="box-closer"><a id="box-close">' + MB_CLOSE + '</a></div>' + add + '<div class="box-load"></div></div><div class="box-bottom" id="box-close"></div>');
 				// sending ajax-request;
-				$.ajax({
-					url:options.url,
-					type:'post',
-					dataType:'html',
-					data:data,
-					success:function(getit){
-						// if we really got some content there;
-						if ( getit ) {
-							// placing content;
-							$('.box-load').html(getit);
-						}
-					},
-					complete:function(){
-						// decorating box;
-						mb.decorate(options);
-					}
+				$('.box-load').load(options.url,data,function(){
+					mb.decorate(options);
 				});
 			} else {
 				// if content is given as a string;
