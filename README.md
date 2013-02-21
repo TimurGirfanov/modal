@@ -21,6 +21,8 @@ Functions:
 How to:
 -------
 ```javascript
+
+	// open box with written content and width=700px;
 	$('#open').on('click',function(){
 		mb.open({
 			width: 700,
@@ -29,6 +31,7 @@ How to:
 		});
 	});
 
+	// open bpx with content loaded by link and width=70% of window;
 	$('#open').on('click',function(){
 		mb.open({
 			width: '70%',
@@ -37,6 +40,7 @@ How to:
 		});
 	});
 
+	// open and send token to the server;
 	$('#open').on('click',function(){
 		mb.open({
 			width: '70%',
@@ -44,5 +48,31 @@ How to:
 			data : {token:'12345679'},
 			url  : '/ajax/action',
 		});
+	});
+	
+	// close;
+	$('body').on('click','#box-close',function(){
+		mb.close();
+		return false;
+	});
+	
+	// put box in center again;
+	$('body').on('click','#save-form',function(){
+		// collect form values;
+		var form=$(this).parent().serialize();
+		if ( form ) {
+			// send it to the server;
+			$.ajax({
+				url: '/ajax/saveform',
+				data: form,
+				success:function(result){
+					if ( result && result == 'success' ) {
+						console.log('done');
+						// close the box;
+						mb.close();
+					}
+				}
+			});
+		}
 	});
 ```
