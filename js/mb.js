@@ -5,26 +5,22 @@ var mb={
 	open:function(options){
 		scrollY=$(window).scrollTop();
 		if ( options ) {
+			var add='';
 			// remove opened;
 			$('.box-cnt').remove();
 			// add new;
 			$('body').append('<div class="box-cnt"><div class="box-bg" id="box-close"></div><div class="box"></div></div>');
 			var box=$('.box');
-			var add='';
 			// if we have title in options;
 			if ( options.title ) {
 				add+='<div class="box-title">' + options.title + '</div>';
 			}
 			// if content should be loaded by link;
 			if ( options.url ) {
-				// defines empty data;
-				var data={};
+				// if we got some data (array), which should be transferred, define it;
+				var data=options.data || {};
 				// append content's blocks;
 				box.html('<div class="box-text"><div class="box-closer"><a id="box-close">' + MB_CLOSE + '</a></div>' + add + '<div class="box-load"></div></div><div class="box-bottom" id="box-close"></div>');
-				// if we got some data (array), which should be transferred, define it;
-				if ( options.data ) {
-					data=options.data;
-				}
 				// sending ajax-request;
 				$.ajax({
 					url:options.url,
@@ -60,12 +56,8 @@ var mb={
 	// position in x-axis
 	decorate:function(options){
 		var box=$('.box');
-		// if we got width in options;
-		if ( options.width ) {
-			var width=options.width;
-		} else {
-			var width='60%';
-		}
+		// define width;
+		var width=options.width || '60%';
 		// if width is given as number of pixels;
 		if ( parseInt(width) == width ) {
 			if ( width < $(window).width() ) {
