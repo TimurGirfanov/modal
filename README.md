@@ -56,7 +56,7 @@ How to:
 		return false;
 	});
 	
-	// put box in center again;
+	// close/fit in height;
 	$('body').on('click','#save-form',function(){
 		// collect form values;
 		var form=$(this).parent().serialize();
@@ -65,11 +65,18 @@ How to:
 			$.ajax({
 				url: '/ajax/saveform',
 				data: form,
+				dataType: 'JSON',
 				success:function(result){
-					if ( result && result == 'success' ) {
-						console.log('done');
-						// close the box;
-						mb.close();
+					if ( result && result.result ) {
+						if ( result.result == 'success' ) {
+							// if success then close;
+							mb.close();
+						} else if ( result.result == 'error' ) {
+							$('#error').html(MESSAGE_ERROR);
+							// if error then show error's message
+							// and fit in height;
+							mb.center();
+						}
 					}
 				}
 			});
