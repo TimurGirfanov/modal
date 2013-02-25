@@ -95,4 +95,16 @@ $('#element-two').on('click',function(){
  mb.center();
  return false;
 });
+
+/**
+ * Send data.
+ */
+$('#element').on('click',function(){
+ mb.open({
+  width: '80%',
+  title: 'Signup form',
+  data : {token: 'abcdefg1234567'},
+  url  : 'http://mysite.com/ajax/signup'
+ });
+});
 ```
