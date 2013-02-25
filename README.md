@@ -22,3 +22,77 @@ Functions:
  - mb.center() - puts in top;
  - mb.close() - removes modal box;
  - mb.closeAll() - removes all modal boxes;
+
+How to:
+-------
+```javascript
+
+/**
+ * Open new modal box.
+ */
+$('#element').on('click',function(){
+ mb.open({
+  width: 700, // in pixels;
+  title: 'One two three!',
+  text: '<h1>Here we go!</h1><div>Hello world!</div>'
+ });
+ return false;
+});
+
+/**
+ * Open new modal box with content loaded by link.
+ */
+$('#element').on('click',function(){
+ mb.open({
+  width: 700, // in pixels;
+  title: 'One two three!',
+  url: 'http://mysite.com/ajax/signup'
+ });
+ return false;
+});
+
+/**
+ * Open new modal box as new layer.
+ */
+$('#element').on('click',function(){
+ mb.open({
+  width: 700, // in pixels;
+  title: 'One two three!',
+  layer: true,
+  text: '<h1>Here we go!</h1><div>Hello world!</div>'
+ });
+ return false;
+});
+
+/**
+ * Open new modal box with width in percent.
+ */
+$('#element').on('click',function(){
+ mb.open({
+  width: "70%", // in percent;
+  title: 'One two three!',
+  text: '<h1>Here we go!</h1><div>Hello world!</div>'
+ });
+ return false;
+});
+
+/**
+ * Put in top.
+ */
+$('#element').on('click',function(){
+ mb.open({
+  width: 700, // in pixels;
+  title: 'One two three!',
+  text: '<h1>Here we go!</h1><div>Hello world!</div>'
+ });
+ return false;
+});
+
+$('#element-two').on('click',function(){
+ // bla-bla-bla
+ ...
+ // put in top. Position depends on height;
+ mb.center();
+ return false;
+});
+```
